@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Кино</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-movie">
+    <header th:insert="blocks/header :: header"></header>
+
+    <main class="container mt-5">
+        <div class="row">
+
+            <div class="col-md-8 bg-light rounded p-3 mb-3">
+                <div class="text-dark">
+                    <a href="/movies" class="btn btn-outline-info text-info mb-3">Вернуться назад</a>
+                    <h1 th:text="${movie.title}"/>
+                    <img th:src="'/media/movies/image/'+${movie.image}" width="200">
+                    <p th:text="${movie.text}"/>
+                    <video controls="controls" preload="metadata" class="col-md-12">
+                        <source th:src="'/media/movies/video/'+${movie.video}" type="video/mp4">
+                    </video>
+                    <br>
+                    <hr>
+                    <span th:text="'Публикация: '+${movie.data}" class="text-muted"/>
+                    <p><b>Категория: </b><mark th:text="${movie.genreSet[0]}"/></p>
+                </div>
+            </div>
+
+            <aside class="col-md-4">
+
+                <div th:replace="blocks/footer :: info-video"></div>
+
+                <div class="p-3 mb-3">
+                    <img src="/image/Video.png" width="300">
+                </div>
+
+                <div th:replace="blocks/footer :: info"></div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer th:replace="blocks/footer :: footer"></footer>
+</body>
+
+<script src="/scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="/scripts/popper.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+</html>

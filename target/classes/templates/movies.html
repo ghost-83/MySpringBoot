@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Кино</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-movie">
+    <header th:insert="blocks/header :: header"></header>
+
+    <main class="container mt-5">
+        <div class="row">
+
+            <div th:each="movie : ${movies}" class="border-secondary border border-info col-md-2 text-center p-3 font-weight-bold bg-secondary">
+                <a th:href="'/movie/'+${movie.id}" class="text-light"><img th:src="'/media/movies/image/'+${movie.image}" width="150"><br><h5 th:text="${movie.title}" class="m-2"/></a>
+            </div>
+            <br>
+
+            <div class="col-md-12 text-center"></div>
+        </div>
+    </main>
+</body>
+
+<script src="/scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="/scripts/popper.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+</html>

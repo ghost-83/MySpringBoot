@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Музыка</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-music">
+    <header th:insert="blocks/header :: header"></header>
+
+    <main class="container mt-5">
+        <div class="row">
+
+            <div class="col-md-8  bg-light rounded p-3 mb-3">
+                <audio src="" id="audioPlayer" controls="controls" preload="metadata" class="col-md-12">
+                    Sorry, your browser doesn't support html5!
+                </audio>
+                <ul id="playlist"><h4>Песни:</h4><hr>
+                    <li><a href="music/Fall_Out_Boy_-_Immortals.mp3"><h6>Fall Out Boy - Immortals  _  <small class="text-muted">Добавлено: 18 ноября 2018 </small></h6></a></li>
+                </ul>
+
+                <div class="text-center"></div>
+            </div>
+
+            <aside class="col-md-4">
+
+                <div th:replace="blocks/footer :: info-music"></div>
+
+                <div class="p-3 mb-3">
+                    <img src="image/chelovechik.jpg" width="300">
+                </div>
+
+                <div th:replace="blocks/footer :: info"></div>
+            </aside>
+        </div>
+    </main>
+
+    <footer th:replace="blocks/footer :: footer"></footer>
+</body>
+
+<script src="scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/audioPlayer.js"></script>
+<script>
+            // loads the audio player
+            audioPlayer();
+</script>
+</html>

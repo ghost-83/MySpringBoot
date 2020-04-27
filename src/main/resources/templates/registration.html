@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Регистрация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <div th:insert="blocks/header :: fon"></div>
+
+    <main role="main" class="block col-md-4">
+        <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
+            <form th:action="@{/registration}" method="post">
+                <h1 class="cover-heading">Регистрация.</h1>
+                <p class="lead">Пройдите регестрацию, заполняйте все строки корректн!</p>
+                <input type="text" id="user" name="username" placeholder="Введите логин" class="form-control"><span id="valid1"></span><br>
+                <input type="text" id="email" name="email" placeholder="Введите email" class="form-control"><span id="valid2"></span><br>
+                <input type="password" id="pass" name="password" placeholder="Введите пароль" class="form-control"><span id="valid3"></span><br>
+                <button type="submit" id="submit" class="btn btn-success">Зарегестрироваться</button><br>
+                <h3 th:text="${message}"/>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+<script src="scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+        var pattern = /^[a-z0-9_-]{4,20}$/i;
+        var patternE = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i;
+        var user = $('#user');
+        var pass = $('#pass');
+        var email = $('#email');
+        var submit = $('#submit');
+        var rezU, rezE, rezP;
+
+		user.blur(function(){
+			if(user.val() != ''){
+				if(user.val().search(pattern) == 0){
+					$('#valid1').text('Готово');
+                    rezU = true;
+                    if(rezU == rezE == rezP == true){
+                        $('#submit').attr('disabled', false);
+                    }
+                    else{
+                        $('#submit').attr('disabled', true);
+                    }
+				}else{
+					$('#valid1').text('Не верный логин');
+					rezU = false;
+				}
+			}else{
+				$('#valid1').text('Поле логин не должно быть пустым!');
+				rezU = false;
+            }
+
+        });
+        email.blur(function(){
+			if(email.val() != ''){
+				if(email.val().search(patternE) == 0){
+                    $('#valid2').text('Готово');
+                    rezE = true;
+                    if(rezU == rezE == rezP == true){
+                        $('#submit').attr('disabled', false);
+                    }
+                    else{
+                        $('#submit').attr('disabled', true);
+                    }
+				}else{
+                    $('#valid2').text('Не верный адрес');
+                    rezE = false;
+				}
+			}else{
+                $('#valid2').text('Поле e-mail не должно быть пустым!');
+                rezE = false;
+            }
+        });
+        pass.blur(function(){
+			if(pass.val() != ''){
+				if(pass.val().search(pattern) == 0){
+					$('#valid3').text('Готово');
+					rezP = true;
+                    if(rezU == rezE == rezP == true){
+                        $('#submit').attr('disabled', false);
+                    }
+                    else{
+                        $('#submit').attr('disabled', true);
+                    }
+				}else{
+					$('#valid3').text('Не верный пароль');
+					rezP = false
+				}
+			}else{
+				$('#valid3').text('Поле пароль не должно быть пустым!');
+				rezP = false
+            }
+        });
+
+	});
+</script>
+</html>

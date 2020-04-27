@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Новый пост</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body { background: url(/image/Fon_new_post.jpg); }
+    </style>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<main class="container mt-5">
+    <div class="row text-center">
+        <div sec:authorize="!hasAuthority('USER')" class="col-md-12">
+            <form th:action="@{/post/new}" method="post">
+                <h1 class="cover-heading">Создание сатьи.</h1>
+                <p class="lead">Для добавления статьи заполните все поля</p>
+                <input type="text" name="title" placeholder="Заголовок" class="form-control"><br>
+                <input type="text" name="anons" placeholder="Введите краткое описание" class="form-control"><br>
+                <textarea name="text" placeholder="Введите текст" class="form-control" rows="10"></textarea><br>
+                <select class="custom-select custom-select-sm" name="sections">
+                    <option selected value="LINUX">Linux</option>
+                    <option value="JAVA">Java</option>
+                    <option value="PYTHON">Python</option>
+                    <option value="ARDUINO">Arduino</option>
+                </select><br><br>
+                <button type="submit" class="btn btn-success">Добавить статью</button><br>
+            </form>
+        </div>
+        <dev sec:authorize="hasAuthority('USER')" class="row text-center">
+            <dev class="col alert-danger">
+                <h1>Доступ запрещен</h1>
+                <hr>
+                <h3>Страница доступна только Администратору и Редактору</h3>
+            </dev>
+        </dev>
+    </div>
+</main>
+
+</body>
+
+<script src="/scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="/scripts/popper.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+</html>

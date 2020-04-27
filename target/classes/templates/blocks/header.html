@@ -1,0 +1,41 @@
+<div xmlns:sec="http://www.hibernate.org/extras/spring-security" th:fragment="header">
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">GHOST</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation" wfd-id="118">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample06">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/posts">Blog<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/movies">Movie<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/music">Music<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <div sec:authorize="isFullyAuthenticated()" class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a sec:authorize="!hasAuthority('USER')" class="dropdown-item" href="/post/new">New Blog</a>
+                    <a sec:authorize="!hasAuthority('USER')" class="dropdown-item" href="/movie/new">New Movie</a>
+                    <a class="dropdown-item" href="/user">User</a>
+                    <a sec:authorize="hasAuthority('ADMIN')" class="dropdown-item" href="/admin">Admin</a>
+                    <form th:action="@{/logout}" method="post">
+                        <input class="dropdown-item" type="submit" value="Exit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="fon">
+    <div class="video">
+        <video src="image/Blue - 27239.mp4" autoplay muted loop></video>
+    </div>
+</div>
+

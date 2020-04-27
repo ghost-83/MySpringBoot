@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Админ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<main class="container mt-5">
+    <div sec:authorize="hasAuthority('ADMIN')" class="row text-center">
+        <dev th:each="user : ${users}" class="col">
+            <div class="alert alert-secondary">
+                <h3 th:text="${user.username}"/>
+                <hr>
+                <p>Email: <b th:text="${user.email}"/>    Роль на сайте: <b th:text="${user.roles[0]}"/></p>
+                <a th:href="'/post-user/' + ${user.id}" class="btn btn-outline-dark">Посты</a>
+            </div>
+        </dev>
+    </div>
+    <dev sec:authorize="!hasAuthority('ADMIN')" class="row text-center">
+        <dev class="col alert-danger">
+            <h1>Доступ запрещен</h1>
+            <hr>
+            <h3>Страница доступна только Администратору</h3>
+        </dev>
+    </dev>
+</main>
+
+<footer th:replace="blocks/footer :: footer"></footer>
+
+</body>
+
+<script src="scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+</html>

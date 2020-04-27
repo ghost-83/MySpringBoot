@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Авторизация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <div th:insert="blocks/header :: fon"></div>
+
+    <main role="main" class="block col-md-4">
+        <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
+            <form th:action="@{/login}" method="post">
+                <h1 class="cover-heading">Добро пожаловать.</h1>
+                <p class="lead">Добро пожаловать на сайт. Для получения доступа к материалу пройдите авторизацию!</p>
+                <input type="text" name="username" placeholder="Введите логин" class="form-control"><br>
+                <input type="password" name="password" placeholder="Введите пароль" class="form-control"><br>
+                <button type="submit" class="btn btn-success">Войти</button><br>
+                <br>
+                <a href="/registration" class="">Зарегестрироваться</a>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+<script src="scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+</html>

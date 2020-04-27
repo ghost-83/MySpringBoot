@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Посты</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="bg-secondary">
+<header th:insert="blocks/header :: header"></header>
+
+    <main class="container mt-3">
+        <div class="row">
+            <div class="row col-md-8">
+                <div th:each="post : ${posts}" class="alert alert-primary" role="alert">
+                    <h4 th:text="${post.title}" class="alert-heading"/>
+                    <p th:each="post : ${posts}"/>
+                    <hr>
+                    <a th:href="'/post/' + ${post.id}" class="btn btn-primary">Читать далее</a>
+                </div>
+            </div>
+
+            <aside class="col-md-4">
+
+                <div th:replace="blocks/footer :: info-blogs"></div>
+
+                <div class="p-3 mb-3">
+                    <img src="/image/Linux.png" width="300">
+                </div>
+
+                <div th:replace="blocks/footer :: info"></div>
+            </aside>
+        </div>
+    </main>
+
+
+    <footer th:replace="blocks/footer :: footer"></footer>
+</body>
+
+<script src="/scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="/scripts/popper.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+</html>
