@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>File</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        body { background: url(/image/bg-0.png); }
+    </style>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<main class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-8 p-3 mb-3">
+            <ul><h4>File:</h4><hr>
+                <li th:each="file : ${files}">
+                    <a th:href="'/media/files/' + ${file.title}"><small th:utext="${file.title} + '&nbsp &nbsp'" class="h6 text-dark"/><small th:text="'&nbsp &nbsp &nbsp _ &nbsp Добавлено: ' +  ${file.data} "/></a>
+                </li>
+            </ul>
+        </div>
+
+        <aside class="col-md-4">
+
+            <div th:replace="blocks/footer :: info-file"></div>
+
+            <div class="p-3 mb-3">
+                <img src="image/chelovechik.jpg" width="300">
+            </div>
+
+            <div th:replace="blocks/footer :: info"></div>
+        </aside>
+    </div>
+</main>
+
+<footer th:replace="blocks/footer :: footer"></footer>
+</body>
+
+<script src="scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+
+</html>

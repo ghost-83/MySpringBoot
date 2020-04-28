@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/main.css">
     <style>
-        body { background: url(/image/Fon_new_post.jpg); }
+        body { background: url(/image/bg-25.png); }
     </style>
 </head>
 <body>
@@ -16,19 +16,30 @@
     <div class="row text-center">
         <div sec:authorize="!hasAuthority('USER')" class="col-md-12">
             <form th:action="@{/movie/new}" method="post" enctype="multipart/form-data">
-                <h1 class="cover-heading">Добавить видео.</h1>
-                <p class="lead">Для добавления видео заполните все поля</p>
-                <input type="file" name="img" placeholder="Image file" class="form-control"><br>
+                <div class="row justify-content-center align-items-center p-1 mb-3">
+                    <div class="bg-light col-md-6 rounded">
+                        <h1 class="cover-heading text-black">Добавить видео.</h1>
+                        <h2 class="lead text-black mb-5">Для добавления видео заполните все поля.</h2>
+                    </div>
+                </div>
                 <input type="text" name="title" placeholder="Заголовок" class="form-control"><br>
                 <textarea name="text" placeholder="Введите текст" class="form-control" rows="10"></textarea><br>
-                <input type="file" name="file" placeholder="Video file" class="form-control"><br>
-                <select class="custom-select custom-select-sm" name="genreSet">
-                    <option selected value="ACTION">Action</option>
-                    <option value="FANTASY">Fantasy</option>
-                    <option value="ADVENTURE">Adventure</option>
-                    <option value="ACTION">Action</option>
-                </select><br><br>
-                <button type="submit" class="btn btn-success">Добавить видео</button><br>
+                <div class="bg-light text-left col-md-6 rounded p-3">
+                    <div class="custom-file mb-3">
+                        <input type="file" name="img" placeholder="Image file"class="mb-3">
+                        <label class="custom-file-label">Image</label>
+                    </div><br>
+                    <div class="custom-file">
+                        <input type="file" name="file" placeholder="Video file" class="mb-3">
+                        <label class="custom-file-label">Video</label>
+                    </div>
+                </div><br>
+                <select class="custom-select custom-select-sm mb-3" name="genreSet">
+                    <option selected value="ACTION">ACTION</option>
+                    <option value="FANTASY">FANTASY</option>
+                    <option value="ADVENTURE">ADVENTURE</option>
+                </select>
+                <button type="submit" class="btn btn-dark mb-3">Добавить видео</button>
             </form>
         </div>
         <dev sec:authorize="hasAuthority('USER')" class="row text-center">

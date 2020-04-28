@@ -13,7 +13,7 @@
         <div class="row">
 
             <div th:each="movie : ${movies}" class="border-secondary border border-info col-md-2 text-center p-3 font-weight-bold bg-secondary">
-                <a th:href="'/movie/'+${movie.id}" class="text-light"><img th:src="'/media/movies/image/'+${movie.image}" width="150"><br><h5 th:text="${movie.title}" class="m-2"/></a>
+                <a th:href="'/movie/'+${movie.id}" class="text-light"><img th:src="'/media/movies/image/'+${movie.image}" width="150"><br><h5 th:text="${movie.title}" class="h6 m-1"/></a>
             </div>
             <br>
 

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Новое аудио</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body { background: url(/image/bg-25.png); }
+    </style>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<main class="container mt-5">
+    <div class="row text-center">
+        <div sec:authorize="!hasAuthority('USER')" class="col-md-12">
+            <form th:action="@{/music/new}" method="post" enctype="multipart/form-data" class="border border-dark border-5 mb-5 p-3">
+                <div class="row justify-content-center align-items-center p-1 mb-3">
+                    <div class="bg-light col-md-6 rounded">
+                        <h1 class="cover-heading text-black">Добавить музыку.</h1>
+                        <h2 class="lead text-black mb-5">Для добавления музыки выберете файл и категорию.</h2>
+                    </div>
+                </div>
+                <div class="bg-light text-left col-md-6 rounded p-3 mb-5">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="music_file" placeholder="file">
+                        <label class="custom-file-label">Music</label>
+                    </div>
+                </div><br>
+                <select class="custom-select custom-select-sm mb-5" name="genreSet">
+                    <option selected value="ROCK">ROCK</option>
+                    <option value="FANTASY">FANTASY</option>
+                    <option value="POP">POP</option>
+                </select>
+                <button type="submit" class="btn btn-dark">Добавить музыку</button>
+            </form>
+
+            <form th:action="@{/file/new}" method="post" enctype="multipart/form-data" class="border border-dark border-3 mb-5 p-3">
+                <div class="row justify-content-center align-items-center">
+                    <div class="bg-light col-md-6 rounded p-1 mb-3">
+                        <h1 class="cover-heading text-black">Добавить файл.</h1>
+                        <h2 class="lead text-black mb-5">Для добавления файла выберете файл.</h2>
+                    </div>
+                </div>
+                <div class="bg-light text-left col-md-6 rounded p-3 mb-5">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="file" placeholder="file">
+                        <label class="custom-file-label">File</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-dark mb-3">Добавить файл</button>
+            </form>
+        </div>
+        <dev sec:authorize="hasAuthority('USER')" class="row text-center">
+            <dev class="col alert-danger">
+                <h1>Доступ запрещен</h1>
+                <hr>
+                <h3>Страница доступна только Администратору и Редактору</h3>
+            </dev>
+        </dev>
+    </div>
+</main>
+
+</body>
+
+<script src="/scripts/jquery-3.4.1.slim.min.js"></script>
+<script src="/scripts/popper.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+</html>
