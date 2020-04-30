@@ -23,6 +23,18 @@ body {
     background: url('/image/bg-15.png');
 }
 
+.bg-admin {
+    background: url(/image/bg-25.png);
+}
+
+.bg-file {
+    background: url(/image/bg-0.png);
+}
+
+.bg-post {
+    background: url(/image/bg-27.png);
+}
+
 video {
     outline: none;
 }

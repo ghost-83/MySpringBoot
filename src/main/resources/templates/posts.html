@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/main.css">
 </head>
-<body class="bg-secondary">
+<body class="bg-post">
 <header th:insert="blocks/header :: header"></header>
 
     <main class="container mt-3">
@@ -14,7 +14,7 @@
             <div class="row col-md-8">
                 <div th:each="post : ${posts}" class="alert alert-primary" role="alert">
                     <h4 th:text="${post.title}" class="alert-heading"/>
-                    <p th:each="post : ${posts}"/>
+                    <p th:text="${post.anons}"/>
                     <hr>
                     <a th:href="'/post/' + ${post.id}" class="btn btn-primary">Читать далее</a>
                 </div>
