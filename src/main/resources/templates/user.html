@@ -13,15 +13,11 @@
     <main role="main" class="block col-md-4">
         <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
             <form th:action="@{/user}" method="post">
-                <h1 class="cover-heading" th:text="'Личный кабинет' + ${user} + '.'"/>
+                <h1 class="cover-heading" th:text="'Личный кабинет ' + ${user} + '.'"/>
                 <p class="lead">Для обновления данных, заполняйте все строки корректн!</p>
                 <input type="text" id="email" th:value="${email}" name="email" placeholder="Введите email" class="form-control"><span id="valid2"></span><br>
                 <input type="password" id="pass" name="password" placeholder="Введите пароль" class="form-control"><span id="valid3"></span><br>
-                <select class="custom-select custom-select-sm" name="roles">
-                    <option selected value="USER">USER</option>
-                    <option value="REDACTOR">REDACTOR</option>
-                    <option value="ADMIN">ADMIN</option>
-                </select><br><br>
+                <br>
                 <button type="submit" id="submit" class="btn btn-success ">Обновить</button>
                 <p></p>
             </form>

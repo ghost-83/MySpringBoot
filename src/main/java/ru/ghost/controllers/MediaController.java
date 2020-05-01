@@ -44,24 +44,16 @@ public class MediaController {
         return "music";
     }
 
-    @GetMapping("/file/new")
-    public String newMusic(Model model){
-        return "file-new";
-    }
-
     @PostMapping("/music/new")
     public String newMusicSave(@RequestParam("music_file") MultipartFile musicFile, Music music, Model model){
         Music newMusic = new Music();
 
         if (music != null){
-            File dirMusic = new File(uploadPath + "movies/musics/");
-            if (!dirMusic.exists())
-                dirMusic.mkdirs();
 
             String musicName = musicFile.getOriginalFilename();
             newMusic.setTitle(musicName);
             try {
-                musicFile.transferTo(new File(uploadPath + "movies/musics/" + musicName));
+                musicFile.transferTo(new File(uploadPath + "musics/" + musicName));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -80,19 +72,21 @@ public class MediaController {
         return "file";
     }
 
+    @GetMapping("/file/new")
+    public String newMusic(Model model){
+        return "file-new";
+    }
+
     @PostMapping("/file/new")
     public String newFile(@RequestParam("file") MultipartFile file, Model model){
         FileMy newFile = new FileMy();
 
         if (file != null){
-            File dirFile = new File(uploadPath + "movies/files/");
-            if (!dirFile.exists())
-                dirFile.mkdirs();
 
             String fileName = file.getOriginalFilename();
             newFile.setTitle(fileName);
             try {
-                file.transferTo(new File(uploadPath + "movies/musics/" + fileName));
+                file.transferTo(new File(uploadPath + "files/" + fileName));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -129,9 +123,6 @@ public class MediaController {
         Movie newMovie = new Movie();
 
         if (img != null){
-            File dirImage = new File(uploadPath + "movies/image/");
-            if (!dirImage.exists())
-                dirImage.mkdirs();
 
             String imageName = img.getOriginalFilename();
             newMovie.setImage(imageName);
@@ -143,9 +134,6 @@ public class MediaController {
         }
 
         if (file != null){
-            File dirVideo = new File(uploadPath + "movies/video/");
-            if (!dirVideo.exists())
-                dirVideo.mkdirs();
 
             String videoName = file.getOriginalFilename();
             newMovie.setVideo(videoName);

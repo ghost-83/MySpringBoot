@@ -39,6 +39,10 @@ video {
     outline: none;
 }
 
+audio {
+    outline: none;
+}
+
 .video{
     position: fixed;
     min-width: 100%;

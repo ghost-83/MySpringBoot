@@ -19,6 +19,11 @@
                     <input type="text" id="user" name="username" placeholder="Введите логин" class="form-control"><span id="valid1"></span><br>
                     <input type="text" id="email" name="email" placeholder="Введите email" class="form-control"><span id="valid2"></span><br>
                     <input type="password" id="pass" name="password" placeholder="Введите пароль" class="form-control"><span id="valid3"></span><br>
+                    <select class="custom-select custom-select-sm" name="roles">
+                        <option selected value="USER">USER</option>
+                        <option value="REDACTOR">REDACTOR</option>
+                        <option value="ADMIN">ADMIN</option>
+                    </select><br><br>
                     <button type="submit" id="submit" class="btn btn-success">Зарегестрироваться</button><br>
                     <h3 th:text="${message}"/>
                 </form>

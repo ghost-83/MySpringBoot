@@ -1,5 +1,6 @@
 package ru.ghost.controllers;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.ghost.models.Post;
 import ru.ghost.enums.Role;
 import ru.ghost.models.User;
@@ -25,6 +26,8 @@ public class MainController {
     private UserRepository userRepository;
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -45,7 +48,7 @@ public class MainController {
             return "registration";
         }
         user.setEnabled(true);
-        user.setRoles(Collections.singleton(Role.USER));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "redirect:/";
     }
@@ -59,12 +62,10 @@ public class MainController {
     }
 
     @PostMapping("/user")
-    public String userSave(Principal principal, @RequestParam String email, @RequestParam String password, @RequestParam String roles, Model model) {
+    public String userSave(Principal principal, @RequestParam String email, @RequestParam String password, Model model) {
         User user = userRepository.findByUsername(principal.getName());
         user.setEmail(email);
-        user.setPassword(password);
-        user.getRoles().clear();
-        user.getRoles().add(Role.valueOf(roles));
+        user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
         return "redirect:/";
     }
