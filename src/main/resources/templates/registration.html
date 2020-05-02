@@ -3,7 +3,7 @@
 <head>
     <title>Регистрация</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
 
     <main role="main" class="block col-md-4">
         <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
-            <div sec:authorize="hasAuthority('ADMIN')">
+            <div sec:authorize="hasAuthority('Admin')">
                 <form th:action="@{/registration}" method="post">
                     <h1 class="cover-heading">Регистрация.</h1>
                     <p class="lead">Пройдите регестрацию, заполняйте все строки корректн!</p>
@@ -20,27 +20,25 @@
                     <input type="text" id="email" name="email" placeholder="Введите email" class="form-control"><span id="valid2"></span><br>
                     <input type="password" id="pass" name="password" placeholder="Введите пароль" class="form-control"><span id="valid3"></span><br>
                     <select class="custom-select custom-select-sm" name="roles">
-                        <option selected value="USER">USER</option>
-                        <option value="REDACTOR">REDACTOR</option>
-                        <option value="ADMIN">ADMIN</option>
+                        <option selected value="User">User</option>
+                        <option value="Redactor">Redactor</option>
+                        <option value="Admin">Admin</option>
                     </select><br><br>
-                    <button type="submit" id="submit" class="btn btn-success">Зарегестрироваться</button><br>
-                    <h3 th:text="${message}"/>
+                    <button type="submit" id="submit" class="btn btn-success mb-3">Зарегестрироваться</button><br>
+                    <h6 th:text="${message}" class="text-danger"/>
                 </form>
             </div>
-            <dev sec:authorize="!hasAuthority('ADMIN')" class="text-danger">
-                <h1>Доступ запрещен</h1>
-                <hr>
-                <h3>Страница доступна только Администратору</h3>
+            <dev sec:authorize="!hasAuthority('Admin')" class="text-danger">
+                <<div th:replace="blocks/admin-menu :: admin-warning"></div>
             </dev>
         </div>
     </main>
 
 </body>
 
-<script src="scripts/jquery-3.4.1.slim.min.js"></script>
-<script src="scripts/popper.min.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){

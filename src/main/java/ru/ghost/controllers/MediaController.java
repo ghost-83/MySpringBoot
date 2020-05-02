@@ -2,6 +2,10 @@ package ru.ghost.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import ru.ghost.enums.MusicGenre;
 import ru.ghost.models.FileMy;
 import ru.ghost.models.Movie;
 import ru.ghost.models.Music;
@@ -38,10 +41,15 @@ public class MediaController {
     private FileRepository fileRepository;
 
     @GetMapping("/music")
-    public String music(Model model) {
-        Iterable<Music> musics = musicRepository.findAll();
-        model.addAttribute("musics", musics);
+    public String music(Model model, @PageableDefault(value = 20, direction = Sort.Direction.DESC) Pageable page) {
+        Page<Music> musics = musicRepository.findAll(page);
+        model.addAttribute("page", musics);
         return "music";
+    }
+
+    @GetMapping("/music/new")
+    public String newMusic(Model model){
+        return "music-new";
     }
 
     @PostMapping("/music/new")
@@ -66,14 +74,14 @@ public class MediaController {
     }
 
     @GetMapping("/file")
-    public String file (Model model) {
-        Iterable<FileMy> files = fileRepository.findAll();
-        model.addAttribute("files", files);
+    public String file (Model model, @PageableDefault(value = 10, direction = Sort.Direction.DESC) Pageable page) {
+        Page<FileMy> files = fileRepository.findAll(page);
+        model.addAttribute("page", files);
         return "file";
     }
 
     @GetMapping("/file/new")
-    public String newMusic(Model model){
+    public String fileNew(Model model){
         return "file-new";
     }
 
@@ -98,9 +106,9 @@ public class MediaController {
     }
 
     @GetMapping("/movies")
-    public String moves(Model model) {
-        Iterable<Movie> movies = movieRepository.findAll();
-        model.addAttribute("movies", movies);
+    public String moves(Model model, @PageableDefault(value = 18, direction = Sort.Direction.DESC) Pageable page) {
+        Page<Movie> movies = movieRepository.findAll(page);
+        model.addAttribute("page", movies);
         return "movies";
     }
 

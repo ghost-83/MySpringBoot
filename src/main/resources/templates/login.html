@@ -3,7 +3,7 @@
 <head>
     <title>Авторизация</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
 
 </body>
 
-<script src="scripts/jquery-3.4.1.slim.min.js"></script>
-<script src="scripts/popper.min.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <title>Кино</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body class="bg-movie">
@@ -14,7 +14,7 @@
 
             <div class="col-md-8 bg-light rounded p-3 mb-3">
                 <div class="text-dark">
-                    <a href="/movies" class="btn btn-outline-info text-info mb-3">Вернуться назад</a>
+                    <a href="#" onclick="history.back(-1);" class="btn btn-outline-info text-info mb-3">Вернуться назад</a>
                     <h1 th:text="${movie.title}"/>
                     <img th:src="'/media/movies/image/'+${movie.image}" width="200">
                     <p th:text="${movie.text}"/>
@@ -24,7 +24,7 @@
                     <br>
                     <hr>
                     <span th:text="'Публикация: '+${movie.data}" class="text-muted"/>
-                    <p><b>Категория: </b><mark th:text="${movie.genreSet[0]}"/></p>
+                    <p><b>Категория: </b><mark th:text="${movie.genreSet[0]}" class="bg-light"/></p>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@
     <footer th:replace="blocks/footer :: footer"></footer>
 </body>
 
-<script src="/scripts/jquery-3.4.1.slim.min.js"></script>
-<script src="/scripts/popper.min.js"></script>
-<script src="/scripts/bootstrap.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <title>File</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="bg-file">
@@ -14,10 +14,32 @@
 
         <div class="col-md-8 p-3 mb-3">
             <ul><h4>File:</h4><hr>
-                <li th:each="file : ${files}">
+                <li th:each="file : ${page.content}">
                     <a th:href="'/media/files/' + ${file.title}"><small th:utext="${file.title} + '&nbsp &nbsp'" class="h6 text-dark"/><small th:text="'&nbsp &nbsp &nbsp _ &nbsp Добавлено: ' +  ${file.data} "/></a>
                 </li>
             </ul>
+
+            <hr>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li th:if="${page.hasPrevious()}" class="page-item">
+                        <a class="page-link" th:href="@{/posts(page=${page.number-1},size=${page.size})}" aria-label="Previous">
+                            <span aria-hidden="true" class="text-dark">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
+                        <li th:if="${page.number == i}" class="page-item disabled"><a class="page-link text-dark" href="#">[[${i}+1]]</a></li>
+                        <li th:unless="${page.number == i}" class="page-item"><a th:href="@{/posts(page=${i},size=${page.size})}" class="page-link text-dark">[[${i}+1]]</a></li>
+                    </th:block>
+
+                    <li th:if="${page.hasNext()}" class="page-item">
+                        <a class="page-link" th:href="@{/posts(page=${page.number+1},size=${page.size})}" aria-label="Next">
+                            <span aria-hidden="true" class="text-dark">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
         <aside class="col-md-4">
@@ -25,7 +47,7 @@
             <div th:replace="blocks/footer :: info-file"></div>
 
             <div class="p-3 mb-3">
-                <img src="image/chelovechik.jpg" width="300">
+                <img src="image/kisspng.png" width="300">
             </div>
 
             <div th:replace="blocks/footer :: info"></div>
@@ -36,8 +58,8 @@
 <footer th:replace="blocks/footer :: footer"></footer>
 </body>
 
-<script src="scripts/jquery-3.4.1.slim.min.js"></script>
-<script src="scripts/popper.min.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
 </html>

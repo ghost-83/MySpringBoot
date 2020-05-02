@@ -4,8 +4,9 @@
         <h3 class="mb-3"><b>Redactor:</b></h3>
         <a href="/post/new" class="btn btn-outline-light btn-block mb-3">New post</a>
         <a href="/movie/new" class="btn btn-outline-light btn-block mb-3">New movie</a>
+        <a href="/music/new" class="btn btn-outline-light btn-block mb-3">New music</a>
         <a href="/file/new" class="btn btn-outline-light btn-block mb-3">New file</a>
-        <div sec:authorize="hasAuthority('ADMIN')">
+        <div sec:authorize="hasAuthority('Admin')">
             <h3 class="mb-3"><b>Admin:</b></h3>
             <a href="/registration" class="btn btn-outline-light btn-block mb-3">New user</a>
             <a type="button" href="/admin" class="btn btn-outline-light btn-block mb-3">Users</a>

@@ -1,8 +1,11 @@
 package ru.ghost.controllers;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.ghost.models.Post;
-import ru.ghost.enums.Role;
 import ru.ghost.models.User;
 import ru.ghost.repositorys.PostRepository;
 import ru.ghost.repositorys.UserRepository;
@@ -50,7 +53,7 @@ public class MainController {
         user.setEnabled(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @GetMapping("/user")
@@ -71,16 +74,15 @@ public class MainController {
     }
 
     @GetMapping("/posts")
-    public String getPosts(Model model){
-        Iterable<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
+    public String getPosts(Model model, @PageableDefault(value = 6, direction = Sort.Direction.DESC) Pageable page){
+        Page<Post> posts = postRepository.findAll(page);
+        model.addAttribute("page", posts);
         return "posts";
     }
 
     @GetMapping("/post/{id}")
     public String postId(@PathVariable(value = "id") Long id, Model model){
-        Post post = postRepository.findById(id).orElseThrow();
-        model.addAttribute("post", post);
+        model.addAttribute("post", postRepository.findById(id).orElseThrow());
         return "post";
     }
 

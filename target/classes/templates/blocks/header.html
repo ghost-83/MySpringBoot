@@ -23,7 +23,7 @@
             <div sec:authorize="isFullyAuthenticated()" class="btn-group" role="group">
                 <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a sec:authorize="!hasAuthority('USER')" class="dropdown-item" href="/post/new">New</a>
+                    <a sec:authorize="!hasAuthority('User')" class="dropdown-item" href="/post/new">New</a>
                     <a class="dropdown-item" href="/user">User</a>
                     <form th:action="@{/logout}" method="post">
                         <input class="dropdown-item" type="submit" value="Exit">

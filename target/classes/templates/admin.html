@@ -3,7 +3,7 @@
 <head>
     <title>Админ</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="bg-admin">
@@ -12,7 +12,7 @@
 <main class="container mt-5">
     <div class="row">
 
-        <div sec:authorize="hasAuthority('ADMIN')" class="col-md-8 p-3 mb-3 text-center">
+        <div sec:authorize="hasAuthority('Admin')" class="col-md-8 p-3 mb-3 text-center">
             <dev th:each="user : ${users}" class="col">
                 <div class="alert alert-secondary">
                     <h3 th:text="${user.username}"/>
@@ -23,7 +23,7 @@
             </dev>
         </div>
 
-        <dev sec:authorize="hasAuthority('USER')" class="col-md-8 text-center">
+        <dev sec:authorize="!hasAuthority('Admin')" class="col-md-8 text-center">
             <div th:replace="blocks/admin-menu :: admin-warning"></div>
         </dev>
 
@@ -42,7 +42,7 @@
 
 </body>
 
-<script src="scripts/jquery-3.4.1.slim.min.js"></script>
-<script src="scripts/popper.min.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </html>

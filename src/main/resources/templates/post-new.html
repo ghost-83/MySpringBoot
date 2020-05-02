@@ -3,7 +3,7 @@
 <head>
     <title>Новый пост</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body class="bg-admin">
@@ -12,7 +12,7 @@
 <main class="container mt-5">
     <div class="row">
 
-        <div sec:authorize="!hasAuthority('USER')" class="col-md-8 p-3 mb-3 text-center">
+        <div sec:authorize="!hasAuthority('User')" class="col-md-8 p-3 mb-3 text-center">
             <form th:action="@{/post/new}" method="post">
                 <h1 class="cover-heading mb-5">Создание статьи.</h1>
                 <input type="text" name="title" placeholder="Заголовок" class="form-control"><br>
@@ -20,15 +20,15 @@
                 <textarea name="text" placeholder="Введите текст" class="form-control" rows="20"></textarea><br>
                 <select class="custom-select custom-select-sm" name="sections">
                     <option selected value="LINUX">Linux</option>
-                    <option value="JAVA">Java</option>
-                    <option value="PYTHON">Python</option>
-                    <option value="ARDUINO">Arduino</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="Arduino">Arduino</option>
                 </select><br><br>
                 <button type="submit" class="btn btn-dark">Добавить статью</button><br>
             </form>
         </div>
 
-        <dev sec:authorize="hasAuthority('USER')" class="col-md-8 text-center">
+        <dev sec:authorize="hasAuthority('User')" class="col-md-8 text-center">
             <div th:replace="blocks/admin-menu :: warning"></div>
         </dev>
 
@@ -44,7 +44,7 @@
 </main>
 </body>
 
-<script src="/scripts/jquery-3.4.1.slim.min.js"></script>
-<script src="/scripts/popper.min.js"></script>
-<script src="/scripts/bootstrap.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </html>

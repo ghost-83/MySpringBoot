@@ -3,7 +3,7 @@
 <head>
     <title>${post.title}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body class="bg-post">
@@ -13,12 +13,12 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="bg-light rounded p-3 mb-3">
-                    <a href="/posts" class="btn btn-outline-info text-info mb-3">Вернуться назад</a>
+                    <a href="#" onclick="history.back(-1);" class="btn btn-outline-dark mb-3">Вернуться назад</a>
                     <br>
                     <h1 th:text="${post.title}" class="p-3 mb-3 text-center"/>
                     <div th:utext="${post.text}" class="p-3 mb-3" />
                     <hr class="bg-white">
-                    <span th:text="'Публикация: ' + ${post.data}" class="text-info"/>
+                    <span th:text="'Публикация: ' + ${post.data}" class="text-secondary"/>
                     <p><b>Категория: </b><mark th:text="${post.sections[0]}" class="bg-light text-black"/><br>
                         <b>Автор: </b><mark th:text="${post.author.username}" class="bg-light text-black"/>
                     </p>
@@ -30,7 +30,7 @@
                 <div th:replace="blocks/footer :: info-blog"></div>
 
                 <div class="p-3 mb-3">
-                    <img src="/image/Python.png" width="300">
+                    <img th:src="'/image/' + ${post.sections[0]} + '.png'" width="300">
                 </div>
 
                 <div th:replace="blocks/footer :: info"></div>
@@ -41,7 +41,7 @@
     <footer th:replace="blocks/footer :: footer"></footer>
 </body>
 
-<script src="/scripts/jquery-3.4.1.slim.min.js"></script>
-<script src="/scripts/popper.min.js"></script>
-<script src="/scripts/bootstrap.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 </html>

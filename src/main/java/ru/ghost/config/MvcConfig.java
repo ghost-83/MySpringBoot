@@ -20,5 +20,14 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/media/**")
                 .addResourceLocations("file:/" + uploadPath);
+
+        registry.addResourceHandler("/jquery/**") //
+                .addResourceLocations("classpath:/META-INF/resources/webjars/jquery/3.5.0/");
+
+        registry.addResourceHandler("/popper/**") //
+                .addResourceLocations("classpath:/META-INF/resources/webjars/popper.js/2.0.2/umd/");
+
+        registry.addResourceHandler("/bootstrap/**") //
+                .addResourceLocations("classpath:/META-INF/resources/webjars/bootstrap/4.4.1-1/");
     }
 }

@@ -61,7 +61,7 @@ public class StartUp {
             admin.setUsername(username);
             admin.setPassword(pass);
             admin.setEmail(email);
-            admin.setRoles(Collections.singleton(Role.ADMIN));
+            admin.setRoles(Collections.singleton(Role.Admin));
             admin.setEnabled(true);
             userRepository.save(admin);
         }
