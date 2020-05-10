@@ -1,3 +1,7 @@
 .git/
 .idea/
+target/
 GhostSite.iml
+.gitignore
+src/main/resources/application.properties
+src/main/resources/application-dev.properties

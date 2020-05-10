@@ -3,7 +3,7 @@
 <head>
     <title>Обновление</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -13,15 +13,11 @@
     <main role="main" class="block col-md-4">
         <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
             <form th:action="@{/user}" method="post">
-                <h1 class="cover-heading" th:text="'Личный кабинет' + ${user} + '.'"/>
+                <h3 class="cover-heading" th:text="'Личный кабинет ' + ${user} + '.'"/>
                 <p class="lead">Для обновления данных, заполняйте все строки корректн!</p>
                 <input type="text" id="email" th:value="${email}" name="email" placeholder="Введите email" class="form-control"><span id="valid2"></span><br>
                 <input type="password" id="pass" name="password" placeholder="Введите пароль" class="form-control"><span id="valid3"></span><br>
-                <select class="custom-select custom-select-sm" name="roles">
-                    <option selected value="USER">Пользователь</option>
-                    <option value="REDACTOR">Редактор</option>
-                    <option value="ADMIN">Администратот</option>
-                </select><br><br>
+                <br>
                 <button type="submit" id="submit" class="btn btn-success ">Обновить</button>
                 <p></p>
             </form>
@@ -30,9 +26,9 @@
 
 </body>
 
-<script src="scripts/jquery-3.4.1.slim.min.js"></script>
-<script src="scripts/popper.min.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){

@@ -1,7 +1,7 @@
 package ru.ghost.repositorys;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import ru.ghost.models.Movie;
 
-public interface MovieRepository extends CrudRepository<Movie, Long> {
+public interface MovieRepository extends PagingAndSortingRepository<Movie, Long> {
 }

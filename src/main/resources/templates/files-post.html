@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Files posts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-file">
+<header th:insert="blocks/header :: header"></header>
+
+<main class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-8 p-3 mb-3">
+            <ul><h4>Files posts:</h4><hr>
+                <li th:each="file : ${files}">
+                    <a target="_blank" th:href="'/media/posts/image/' + ${file}"><small th:utext="${file} + '&nbsp &nbsp'" class="h6 text-dark"/></a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+
+        <aside class="col-md-4">
+
+            <div th:replace="blocks/footer :: info-file"></div>
+
+            <div class="p-3 mb-3">
+                <img src="image/kisspng.png" width="300">
+            </div>
+
+            <div th:replace="blocks/footer :: info"></div>
+        </aside>
+    </div>
+</main>
+
+<footer th:replace="blocks/footer :: footer"></footer>
+</body>
+
+<script th:src="@{/jquery/jquery.min.js}"></script>
+<script th:src="@{/popper/popper.min.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</html>

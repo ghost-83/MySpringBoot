@@ -14,7 +14,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title, anons, data;
+    private String title, data;
+
+    @Length(max = 500)
+    private String anons;
 
     @Length(max = 10000)
     private String text;
