@@ -1,13 +1,7 @@
 .git/
 .idea/
-<<<<<<< HEAD
 target/
 GhostSite.iml
 .gitignore
 src/main/resources/application.properties
 src/main/resources/application-dev.properties
-=======
-GhostSite.iml
-.gitignore
-src/main/resources/application.properties
->>>>>>> dd458b59a05f87e333951e01fbe2321194725a29
