@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Кино</title>
+    <title th:text="${movie.title}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="/styles/main.css">
@@ -14,7 +14,7 @@
 
             <div class="col-md-8 bg-light rounded p-3 mb-3">
                 <div class="text-dark">
-                    <a href="#" onclick="history.back(-1);" class="btn btn-outline-info text-info mb-3">Вернуться назад</a>
+                    <a href="#" onclick="history.back(-1);" class="btn btn-outline-info text-info mb-3">Come back</a>
                     <h1 th:text="${movie.title}"/>
                     <img th:src="'/media/movies/image/'+${movie.image}" width="200">
                     <p th:text="${movie.text}"/>

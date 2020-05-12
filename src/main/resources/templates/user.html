@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Обновление</title>
+    <title>Update</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="styles/main.css">
@@ -13,12 +13,12 @@
     <main role="main" class="block col-md-4">
         <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
             <form th:action="@{/user}" method="post">
-                <h3 class="cover-heading" th:text="'Личный кабинет ' + ${user} + '.'"/>
-                <p class="lead">Для обновления данных, заполняйте все строки корректн!</p>
-                <input type="text" id="email" th:value="${email}" name="email" placeholder="Введите email" class="form-control"><span id="valid2"></span><br>
-                <input type="password" id="pass" name="password" placeholder="Введите пароль" class="form-control"><span id="valid3"></span><br>
+                <h3 class="cover-heading" th:text="'Personal area ' + ${user} + '.'"/>
+                <p class="lead">To update the data, fill in all lines correctly!</p>
+                <input type="text" id="email" th:value="${email}" name="email" placeholder="Enter email" class="form-control"><span id="valid2"></span><br>
+                <input type="password" id="pass" name="password" placeholder="Enter password" class="form-control"><span id="valid3"></span><br>
                 <br>
-                <button type="submit" id="submit" class="btn btn-success ">Обновить</button>
+                <button type="submit" id="submit" class="btn btn-success ">Refresh</button>
                 <p></p>
             </form>
         </div>

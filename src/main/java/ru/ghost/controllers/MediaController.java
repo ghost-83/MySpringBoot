@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import ru.ghost.enums.Genre;
+import ru.ghost.enums.MusicGenre;
+import ru.ghost.enums.Section;
 import ru.ghost.models.FileMy;
 import ru.ghost.models.Movie;
 import ru.ghost.models.Music;
@@ -49,6 +52,7 @@ public class MediaController {
 
     @GetMapping("/music/new")
     public String newMusic(Model model){
+        model.addAttribute("genres", MusicGenre.values());
         return "music-new";
     }
 
@@ -145,6 +149,7 @@ public class MediaController {
 
     @GetMapping("/movie/new")
     public String newMovie(Model model){
+        model.addAttribute("genres",  Genre.values());
         return "movie-new";
     }
 

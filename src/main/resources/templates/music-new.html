@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Новое аудио</title>
+    <title>New audio</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="/styles/main.css">
@@ -14,7 +14,7 @@
 
         <div sec:authorize="!hasAuthority('User')" class="col-md-8 p-3 mb-3 text-center">
             <form th:action="@{/music/new}" method="post" enctype="multipart/form-data" class="was-validated border border-dark border-5 mb-5 p-3">
-                <h1 class="cover-heading text-black mb-5">Добавить музыку.</h1>
+                <h1 class="cover-heading text-black mb-5">Add music.</h1>
                 <div class="bg-light text-left col-md-6 rounded p-3 mb-5">
                     <div class="custom-file">
                         <input type="file" name="music_file" class="custom-file-input" id="validatedCustomFile" required >
@@ -23,11 +23,9 @@
                     </div>
                 </div><br>
                 <select class="custom-select custom-select-sm mb-5" name="genreSet">
-                    <option selected value="Rock">Rock</option>
-                    <option value="Fantasy">Fantasy</option>
-                    <option value="POP">POP</option>
+                    <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"/>
                 </select>
-                <button type="submit" class="btn btn-dark">Добавить музыку</button>
+                <button type="submit" class="btn btn-dark">Add music</button>
             </form>
 
         </div>

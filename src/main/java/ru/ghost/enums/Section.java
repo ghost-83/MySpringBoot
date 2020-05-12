@@ -1,5 +1,5 @@
 package ru.ghost.enums;
 
 public enum Section {
-    Linux, Java, Python, Arduino;
+    Linux, Java, Python, Arduino, Raspberry, English, Other;
 }

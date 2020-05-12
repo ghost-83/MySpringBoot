@@ -15,7 +15,7 @@
         <div class="col-md-8 p-3 mb-3">
             <ul><h4>File:</h4><hr>
                 <li th:each="file : ${page.content}">
-                    <a th:href="'/media/files/' + ${file.title}"><small th:utext="${file.title} + '&nbsp &nbsp'" class="h6 text-dark"/><small th:text="'&nbsp &nbsp &nbsp _ &nbsp Добавлено: ' +  ${file.data} "/></a>
+                    <a th:href="'/media/files/' + ${file.title}"><small th:utext="${file.title} + '&nbsp &nbsp'" class="h6 text-dark"/><small th:text="'&nbsp &nbsp &nbsp _ &nbsp Added: ' +  ${file.data} "/></a>
                 </li>
             </ul>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Посты</title>
+    <title>Posts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="/styles/main.css">
@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <h5 th:text="${post.title}" class="card-title"/>
                                 <p th:text="${post.anons}" class="card-text"/>
-                                <a th:href="'/post/' + ${post.id}" class="btn btn-outline-light btn-block">Читать далее</a>
+                                <a th:href="'/post/' + ${post.id}" class="btn btn-outline-light btn-block">Read more</a>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Админ</title>
+    <title>Admin</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="styles/main.css">
@@ -17,8 +17,8 @@
                 <div class="alert alert-secondary">
                     <h3 th:text="${user.username}"/>
                     <hr>
-                    <p>Email: <b th:text="${user.email}"/>    Роль на сайте: <b th:text="${user.roles[0]}"/></p>
-                    <a th:href="'/post-user/' + ${user.id}" class="btn btn-outline-dark">Посты</a>
+                    <p>Email: <b th:text="${user.email}"/>    User role: <b th:text="${user.roles[0]}"/></p>
+                    <a th:href="'/post-user/' + ${user.id}" class="btn btn-outline-dark">Post</a>
                 </div>
             </dev>
         </div>

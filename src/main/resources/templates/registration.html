@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Регистрация</title>
+    <title>Registration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="styles/main.css">
@@ -14,17 +14,15 @@
         <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
             <div sec:authorize="hasAuthority('Admin')">
                 <form th:action="@{/registration}" method="post">
-                    <h1 class="cover-heading">Регистрация.</h1>
-                    <p class="lead">Пройдите регестрацию, заполняйте все строки корректн!</p>
-                    <input type="text" id="user" name="username" placeholder="Введите логин" class="form-control"><span id="valid1"></span><br>
-                    <input type="text" id="email" name="email" placeholder="Введите email" class="form-control"><span id="valid2"></span><br>
-                    <input type="password" id="pass" name="password" placeholder="Введите пароль" class="form-control"><span id="valid3"></span><br>
+                    <h1 class="cover-heading">Registration.</h1>
+                    <p class="lead">Register, fill in all lines correctly!</p>
+                    <input type="text" id="user" name="username" placeholder="Enter username" class="form-control"><span id="valid1"></span><br>
+                    <input type="text" id="email" name="email" placeholder="Enter email" class="form-control"><span id="valid2"></span><br>
+                    <input type="password" id="pass" name="password" placeholder="Enter password" class="form-control"><span id="valid3"></span><br>
                     <select class="custom-select custom-select-sm" name="roles">
-                        <option selected value="User">User</option>
-                        <option value="Redactor">Redactor</option>
-                        <option value="Admin">Admin</option>
+                        <option th:each="role : ${roles}" th:selected="(${role} == *{user_role})" th:value="${role}" th:text="${role}"/>
                     </select><br><br>
-                    <button type="submit" id="submit" class="btn btn-success mb-3">Зарегестрироваться</button><br>
+                    <button type="submit" id="submit" class="btn btn-success mb-3">Sign up</button><br>
                     <h6 th:text="${message}" class="text-danger"/>
                 </form>
             </div>

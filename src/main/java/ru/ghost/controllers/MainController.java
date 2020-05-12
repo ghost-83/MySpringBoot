@@ -5,6 +5,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.ghost.enums.Genre;
+import ru.ghost.enums.Role;
+import ru.ghost.enums.Section;
 import ru.ghost.models.Post;
 import ru.ghost.models.User;
 import ru.ghost.repositorys.PostRepository;
@@ -51,6 +54,7 @@ public class MainController {
             return "registration";
         }
         user.setEnabled(true);
+        user.setRoles(Collections.singleton(Role.User));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "redirect:/admin";
@@ -61,6 +65,8 @@ public class MainController {
         User user = userRepository.findByUsername(principal.getName());
         model.addAttribute("user", user.getUsername());
         model.addAttribute("email", user.getEmail());
+        model.addAttribute("user_role", user.getRoles());
+        model.addAttribute("roles", Role.values());
         return "user";
     }
 
@@ -88,6 +94,7 @@ public class MainController {
 
     @GetMapping("/post/new")
     public String newPosts(Model model){
+        model.addAttribute("sections",  Section.values());
         return "post-new";
     }
 
@@ -102,6 +109,24 @@ public class MainController {
         newPost.setData( new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
         postRepository.save(newPost);
         return "redirect:/posts";
+    }
+
+    @GetMapping("/post/{id}/edit")
+    public String postEdit(@PathVariable(value = "id") Long id, Model model){
+        model.addAttribute("post", postRepository.findById(id).orElseThrow());
+        model.addAttribute("sections",  Section.values());
+        return "post-edit";
+    }
+
+    @PostMapping("/post/{id}/edit")
+    public String newPostsSave(Post post,  Model model){
+        Post editPost = postRepository.findById(post.getId()).orElseThrow();
+        editPost.setTitle(post.getTitle());
+        editPost.setAnons(post.getAnons());
+        editPost.setText(post.getText());
+        editPost.setSections(post.getSections());
+        postRepository.save(editPost);
+        return "redirect:/post/" + post.getId();
     }
 
     @GetMapping("/admin")

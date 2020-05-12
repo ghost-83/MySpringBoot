@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Новый пост</title>
+    <title>New post</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
     <link rel="stylesheet" href="/styles/main.css">
@@ -13,18 +13,15 @@
     <div class="row">
 
         <div sec:authorize="!hasAuthority('User')" class="col-md-8 p-3 mb-3 text-center">
-            <form th:action="@{/post/new}" method="post">
-                <h1 class="cover-heading mb-5">Создание статьи.</h1>
-                <input type="text" name="title" placeholder="Заголовок" class="form-control"><br>
-                <input type="text" name="anons" placeholder="Введите краткое описание" class="form-control"><br>
-                <textarea name="text" placeholder="Введите текст" class="form-control" rows="20"></textarea><br>
+            <form th:action="@{/post/new}" method="post" class="was-validated">
+                <h1 class="cover-heading mb-5">Article creation.</h1>
+                <input type="text" name="title" placeholder="Title" class="form-control" required><br>
+                <input type="text" name="anons" placeholder="Enter a short description" class="form-control" required><br>
+                <textarea spellcheck="true" name="text" placeholder="Enter text" class="form-control" rows="20" required></textarea><br>
                 <select class="custom-select custom-select-sm" name="sections">
-                    <option selected value="LINUX">Linux</option>
-                    <option value="Java">Java</option>
-                    <option value="Python">Python</option>
-                    <option value="Arduino">Arduino</option>
+                    <option th:each="section : ${sections}" th:value="${section}" th:text="${section}"/>
                 </select><br><br>
-                <button type="submit" class="btn btn-dark">Добавить статью</button><br>
+                <button type="submit" class="btn btn-dark">Add post</button><br>
             </form>
         </div>
 
