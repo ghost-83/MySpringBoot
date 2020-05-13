@@ -46,6 +46,10 @@ public class StartUp {
         if (!dir.exists())
             dir.mkdirs();
 
+        dir = new File(uploadPath + "movies/poster/");
+        if (!dir.exists())
+            dir.mkdirs();
+
         dir = new File(uploadPath + "movies/video/");
         if (!dir.exists())
             dir.mkdir();

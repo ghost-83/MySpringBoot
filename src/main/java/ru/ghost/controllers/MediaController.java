@@ -154,7 +154,7 @@ public class MediaController {
     }
 
     @PostMapping("/movie/new")
-    public String newMovieSave(Movie movie, @RequestParam("img") MultipartFile img, @RequestParam("file") MultipartFile file, Model model){
+    public String newMovieSave(Movie movie, @RequestParam("img") MultipartFile img, @RequestParam("poster-img") MultipartFile posterImage, @RequestParam("file") MultipartFile file, Model model){
         Movie newMovie = new Movie();
 
         if (img != null){
@@ -163,6 +163,17 @@ public class MediaController {
             newMovie.setImage(imageName);
             try {
                 img.transferTo(new File(uploadPath + "movies/image/" + imageName));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (posterImage != null){
+
+            String posterName = posterImage.getOriginalFilename();
+            newMovie.setPoster(posterName);
+            try {
+                posterImage.transferTo(new File(uploadPath + "movies/poster/" + posterName));
             } catch (IOException e) {
                 e.printStackTrace();
             }

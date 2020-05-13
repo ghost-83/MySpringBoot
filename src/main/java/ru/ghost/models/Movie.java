@@ -17,7 +17,7 @@ public class Movie {
     @Length(max = 5000)
     private String text;
 
-    private String image, title, video, data;
+    private String image, poster, title, video, data;
 
     @ElementCollection(targetClass = Genre.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"))
@@ -38,6 +38,14 @@ public class Movie {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
     public String getTitle() {

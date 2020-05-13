@@ -18,13 +18,13 @@
                     <h1 th:text="${movie.title}"/>
                     <img th:src="'/media/movies/image/'+${movie.image}" width="200">
                     <p th:text="${movie.text}"/>
-                    <video controls="controls" preload="metadata" class="col-md-12">
+                    <video controls="controls" preload="metadata" class="col-md-12" th:poster="'/media/movies/poster/'+${movie.poster}">
                         <source th:src="'/media/movies/video/'+${movie.video}" type="video/mp4">
                     </video>
                     <br>
                     <hr>
-                    <span th:text="'Публикация: '+${movie.data}" class="text-muted"/>
-                    <p><b>Категория: </b><mark th:text="${movie.genreSet[0]}" class="bg-light"/></p>
+                    <span th:text="'Publication: '+${movie.data}" class="text-muted"/>
+                    <p><b>Category: </b><mark th:text="${movie.genreSet[0]}" class="bg-light"/></p>
                 </div>
             </div>
 
