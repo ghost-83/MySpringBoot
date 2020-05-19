@@ -14,7 +14,7 @@
 
         <div sec:authorize="!hasAuthority('User')" class="col-md-8 p-3 mb-3 text-center">
             <form th:action="@{/post/new}" method="post" class="was-validated">
-                <h1 class="cover-heading mb-5">Article creation.</h1>
+                <h1 class="cover-heading mb-5">Article creation</h1>
                 <input type="text" name="title" placeholder="Title" class="form-control" required><br>
                 <input type="text" name="anons" placeholder="Enter a short description" class="form-control" required><br>
                 <textarea spellcheck="true" name="text" placeholder="Enter text" class="form-control" rows="20" required></textarea><br>

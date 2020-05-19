@@ -14,7 +14,7 @@
 
         <div sec:authorize="!hasAuthority('User')" class="col-md-8 p-3 mb-3 text-center">
             <form th:action="@{/movie/new}" method="post" enctype="multipart/form-data" class="was-validated">
-                <h1 class="cover-heading text-black mb-5">Add movie.</h1>
+                <h1 class="cover-heading text-black mb-5">Add movie</h1>
                 <input type="text" name="title" placeholder="Title" class="form-control" required><br>
                 <textarea name="text" placeholder="Enter text" class="form-control" rows="10" required></textarea><br>
                 <div class="bg-light text-left col-md-6 rounded p-3">

@@ -13,7 +13,7 @@
     <main role="main" class="block col-md-4">
         <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
             <form th:action="@{/user}" method="post">
-                <h3 class="cover-heading" th:text="'Personal area ' + ${user} + '.'"/>
+                <h3 class="cover-heading" th:text="'Personal area ' + ${user}"/><br>
                 <p class="lead">To update the data, fill in all lines correctly!</p>
                 <input type="text" id="email" th:value="${email}" name="email" placeholder="Enter email" class="form-control"><span id="valid2"></span><br>
                 <input type="password" id="pass" name="password" placeholder="Enter password" class="form-control"><span id="valid3"></span><br>

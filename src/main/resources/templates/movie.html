@@ -15,9 +15,9 @@
             <div class="col-md-8 bg-light rounded p-3 mb-3">
                 <div class="text-dark">
                     <a href="#" onclick="history.back(-1);" class="btn btn-outline-info text-info mb-3">Come back</a>
-                    <h1 th:text="${movie.title}"/>
-                    <img th:src="'/media/movies/image/'+${movie.image}" width="200">
-                    <p th:text="${movie.text}"/>
+                    <h2 th:text="${movie.title}" class="mb-3"/>
+                    <img th:src="'/media/movies/image/'+${movie.image}" width="200" class="mb-3">
+                    <p th:utext="${movie.text}"/>
                     <video controls="controls" preload="metadata" class="col-md-12" th:poster="'/media/movies/poster/'+${movie.poster}">
                         <source th:src="'/media/movies/video/'+${movie.video}" type="video/mp4">
                     </video>

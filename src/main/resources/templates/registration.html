@@ -13,12 +13,11 @@
     <main role="main" class="block col-md-4">
         <div class="text-center bg-warning p-3 mb-3 rounded align-items-center row justify-content-center">
             <div sec:authorize="hasAuthority('Admin')">
-                <form th:action="@{/registration}" method="post">
-                    <h1 class="cover-heading">Registration.</h1>
-                    <p class="lead">Register, fill in all lines correctly!</p>
-                    <input type="text" id="user" name="username" placeholder="Enter username" class="form-control"><span id="valid1"></span><br>
-                    <input type="text" id="email" name="email" placeholder="Enter email" class="form-control"><span id="valid2"></span><br>
-                    <input type="password" id="pass" name="password" placeholder="Enter password" class="form-control"><span id="valid3"></span><br>
+                <form th:action="@{/registration}" method="post" class="was-validated">
+                    <h3 class="cover-heading">Registration new user</h3>
+                    <input type="text" name="username" placeholder="Enter username" class="form-control" required><br>
+                    <input type="text" name="email" placeholder="Enter email" class="form-control" required><br>
+                    <input type="password" name="password" placeholder="Enter password" class="form-control" required><br>
                     <select class="custom-select custom-select-sm" name="roles">
                         <option th:each="role : ${roles}" th:selected="(${role} == *{user_role})" th:value="${role}" th:text="${role}"/>
                     </select><br><br>
@@ -37,79 +36,4 @@
 <script th:src="@{/jquery/jquery.min.js}"></script>
 <script th:src="@{/popper/popper.min.js}"></script>
 <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-        var pattern = /^[a-z0-9_-]{4,20}$/i;
-        var patternE = /^[a-z0-9_-]+@[a-z0-9-]+\.([a-z]{1,6}\.)?[a-z]{2,6}$/i;
-        var user = $('#user');
-        var pass = $('#pass');
-        var email = $('#email');
-        var submit = $('#submit');
-        var rezU, rezE, rezP;
-
-		user.blur(function(){
-			if(user.val() != ''){
-				if(user.val().search(pattern) == 0){
-					$('#valid1').text('Готово');
-                    rezU = true;
-                    if(rezU == rezE == rezP == true){
-                        $('#submit').attr('disabled', false);
-                    }
-                    else{
-                        $('#submit').attr('disabled', true);
-                    }
-				}else{
-					$('#valid1').text('Не верный логин');
-					rezU = false;
-				}
-			}else{
-				$('#valid1').text('Поле логин не должно быть пустым!');
-				rezU = false;
-            }
-
-        });
-        email.blur(function(){
-			if(email.val() != ''){
-				if(email.val().search(patternE) == 0){
-                    $('#valid2').text('Готово');
-                    rezE = true;
-                    if(rezU == rezE == rezP == true){
-                        $('#submit').attr('disabled', false);
-                    }
-                    else{
-                        $('#submit').attr('disabled', true);
-                    }
-				}else{
-                    $('#valid2').text('Не верный адрес');
-                    rezE = false;
-				}
-			}else{
-                $('#valid2').text('Поле e-mail не должно быть пустым!');
-                rezE = false;
-            }
-        });
-        pass.blur(function(){
-			if(pass.val() != ''){
-				if(pass.val().search(pattern) == 0){
-					$('#valid3').text('Готово');
-					rezP = true;
-                    if(rezU == rezE == rezP == true){
-                        $('#submit').attr('disabled', false);
-                    }
-                    else{
-                        $('#submit').attr('disabled', true);
-                    }
-				}else{
-					$('#valid3').text('Не верный пароль');
-					rezP = false
-				}
-			}else{
-				$('#valid3').text('Поле пароль не должно быть пустым!');
-				rezP = false
-            }
-        });
-
-	});
-</script>
 </html>

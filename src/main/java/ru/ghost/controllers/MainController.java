@@ -42,6 +42,8 @@ public class MainController {
 
     @GetMapping("/registration")
     public String registration(Model model) {
+
+        model.addAttribute("roles",  Role.values());
         return "registration";
     }
 

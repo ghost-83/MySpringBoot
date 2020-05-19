@@ -14,7 +14,7 @@
 
         <div sec:authorize="!hasAuthority('User')" class="col-md-8 p-3 mb-3 text-center">
             <form th:action="@{'/post/' + ${post.id} + '/edit'}" method="post">
-                <h1 class="cover-heading mb-5">Edit post.</h1>
+                <h1 class="cover-heading mb-5">Edit post</h1>
                 <input type="text" name="title" th:value="${post.title}" placeholder="Title" class="form-control"/><br>
                 <input type="text" name="anons" th:value="${post.anons}" placeholder="Enter a short description" class="form-control"/><br>
                 <textarea spellcheck="true" name="text" placeholder="Enter text" class="form-control" rows="20">[[${post.text}]]</textarea><br>
