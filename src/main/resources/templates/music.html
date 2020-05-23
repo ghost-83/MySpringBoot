@@ -41,11 +41,11 @@
 
                         <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
                             <li th:if="${page.number == i}" class="page-item disabled"><a class="page-link text-dark" href="#">[[${i}+1]]</a></li>
-                            <li th:unless="${page.number == i}" class="page-item"><a th:href="@{/posts(page=${i},size=${page.size})}" class="page-link text-dark">[[${i}+1]]</a></li>
+                            <li th:unless="${page.number == i}" class="page-item"><a th:href="@{/music(page=${i},size=${page.size})}" class="page-link text-dark">[[${i}+1]]</a></li>
                         </th:block>
 
                         <li th:if="${page.hasNext()}" class="page-item">
-                            <a class="page-link" th:href="@{/posts(page=${page.number+1},size=${page.size})}" aria-label="Next">
+                            <a class="page-link" th:href="@{/music(page=${page.number+1},size=${page.size})}" aria-label="Next">
                                 <span aria-hidden="true" class="text-dark">&raquo;</span>
                             </a>
                         </li>
